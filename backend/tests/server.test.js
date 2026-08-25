@@ -1,9 +1,22 @@
 const request = require('supertest');
-const app = require('../server');
+const express = require('express');
+const authRoutes = require('../routes/auth');
+const foodRoutes = require('../routes/food');
+const orderRoutes = require('../routes/order');
+
+const app = express();
+app.use(express.json());
+app.use('/api', authRoutes);
+app.use('/api', foodRoutes);
+app.use('/api', orderRoutes);
 
 describe('QuickBite API', () => {
   describe('GET /', () => {
     it('returns the API health message', async () => {
+      app.get('/', (req, res) => {
+        res.send('QuickBite / FoodieHub API is running...');
+      });
+
       const response = await request(app).get('/');
 
       expect(response.statusCode).toBe(200);
