@@ -24,7 +24,7 @@ services:
    dockerfile: Dockerfile.fe
   container_name: frontend
   ports: 
-   - "8080:80"
+   - "8001:80"
   depends_on: 
    - backend
 volumes:
