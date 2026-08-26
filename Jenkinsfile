@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo "tagging the image..."
                 sh 'docker tag frontend-image:latest abbas2483/quickbite-fe:v1'
-                sh 'docker tag backend-image:latest abbs2483/quickbite-be:v1'
+                sh 'docker tag backend-image:latest abbas2483/quickbite-be:v1'
             }
         }
         stage ('pushing it to dockerhub'){
