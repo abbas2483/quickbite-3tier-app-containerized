@@ -10,6 +10,7 @@ services:
   build:
    context: .
    dockerfile: Dockerfile.be
+  image: backend-image:latest 
   container_name: backend
   ports:
    - "5001:5001"
@@ -22,6 +23,7 @@ services:
   build:
    context: .
    dockerfile: Dockerfile.fe
+  image: frontend-image:latest 
   container_name: frontend
   ports: 
    - "8001:80"

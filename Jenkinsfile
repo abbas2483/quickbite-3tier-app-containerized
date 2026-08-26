@@ -35,13 +35,27 @@ pipeline {
                 echo "image and containers build and ran succesfully"
             }
         }
-        stage('logging into docker hub'){
+        stage('logging into docker hub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'Dockerhub-Password', usernameVariable: 'Dockerhub-Username')]) {
                     sh 'docker login -u ${Dockerhub-Username} -p ${Dockerhub-Password}'
                     echo "logging into dockerhub"
 }
                         }
+        }
+        stage ('tagging the images') {
+            steps {
+                echo "tagging the image..."
+                sh 'docker tag frontend-image:latest quickbite-fe:v1'
+                sh 'docker tag backend-image:latest quickbite-be:v1'
+            }
+        }
+        stage ('pushing it to dockerhub'){
+            steps {
+                echo "pushing the iamges to dockerhub"
+                sh 'docker push abbas2483/quickbite-fe:v1'
+                sh 'docker push abbas2483/quickbite-be:v1'
+            }
         }
     }
 }
