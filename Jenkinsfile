@@ -43,7 +43,7 @@ pipeline {
 }
                         }
         }
-        stage ('tagging the images') {
+        stage ('tagging the images..') {
             steps {
                 echo "tagging the image..."
                 sh 'docker tag frontend-image:latest quickbite-fe:v1'
