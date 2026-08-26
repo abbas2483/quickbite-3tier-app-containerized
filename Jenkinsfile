@@ -57,5 +57,10 @@ pipeline {
                 sh 'docker push abbas2483/quickbite-be:v1'
             }
         }
+        stage ('End') {
+            steps {
+                echo "congratulation.."
+            }
+        }
     }
 }
